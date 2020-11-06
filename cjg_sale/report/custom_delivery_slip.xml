@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_delivery_slip" inherit_id="stock.report_delivery_document">
+        <xpath expr="//th[@name='th_sm_quantity']" position="before">
+            <th><strong>Box Count</strong></th>
+            <th><strong>Package Count</strong></th>
+        </xpath>
+        <xpath expr="//tr[@t-as='move']//td" position="after">
+            <td>
+                <span t-field="move.box_count"/>
+            </td>
+            <td>
+                <span t-field="move.package_count"/>
+            </td>
+        </xpath>
+        <xpath expr="//table" position="after">
+            
+            <div>
+                <strong>Total Box Count: </strong>
+                <span t-field="o.sale_id.total_box_count"/>
+            </div>
+            <div>
+                <strong>Total Package Count: </strong>
+                <span t-field="o.sale_id.total_package_count"/>
+            </div>    
+            
+        </xpath>
+    </template>
+</odoo>
