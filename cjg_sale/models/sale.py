@@ -6,7 +6,7 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     case_pack = fields.Integer(related='product_id.case_pack')
-    box_count = fields.Integer(compute='_compute_box', string='Box Count', default=0, store=True)
+    box_count = fields.Float(compute='_compute_box', string='Box Count', default=0, store=True)
     box_price = fields.Integer(compute='_compute_box', string='Box Price')
     package_count = fields.Integer(compute='_compute_package_count', string='Package Count', default=0, store=True)
 
