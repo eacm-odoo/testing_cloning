@@ -17,7 +17,7 @@ class SaleOrderLine(models.Model):
                 record.box_count = record.product_uom_qty / record.product_id.case_pack
             record.box_price = record.price_unit * record.product_id.case_pack
 
-    @api.depends('product_uom_qty', 'product_packaging.qty')
+    @api.depends('product_uom_qty', 'product_packaging.qty', 'product_packaging')
     def _compute_package_count(self):
         for record in self.filtered(lambda sol: sol.product_packaging.qty):
                 record.package_count = record.product_uom_qty / record.product_packaging.qty
