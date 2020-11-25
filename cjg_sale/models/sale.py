@@ -10,7 +10,7 @@ class SaleOrderLine(models.Model):
     box_price = fields.Integer(compute='_compute_box', string='Box Price')
     package_count = fields.Integer(compute='_compute_package_count', string='Package Count', default=0, store=True)
 
-    @api.depends('product_uom_qty', 'product_id.case_pack')
+    @api.depends('product_uom_qty', 'product_id.case_pack', 'product_id', 'price_unit')
     def _compute_box(self):
         for record in self:
             if record.product_id.case_pack:
