@@ -7,11 +7,6 @@ class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     def _action_launch_stock_rule(self, previous_product_uom_qty=False):
-        """
-        Launch procurement group run method with required/custom fields genrated by a
-        sale order line. procurement group will launch '_run_pull', '_run_buy' or '_run_manufacture'
-        depending on the sale order line product rule.
-        """
         precision = self.env['decimal.precision'].precision_get('Product Unit of Measure')
         procurements = []
         for line in self:
@@ -53,7 +48,7 @@ class SaleOrderLine(models.Model):
     def _compute_qty_delivered(self):
         super(SaleOrderLine, self)._compute_qty_delivered()
 
-        for line in self:  # TODO: maybe one day, this should be done in SQL for performance sake
+        for line in self:
             if line.qty_delivered_method == 'stock_move':
                 qty = 0.0
                 outgoing_moves, incoming_moves = line._get_outgoing_incoming_moves()
