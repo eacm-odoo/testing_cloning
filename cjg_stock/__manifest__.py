@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "cjg_stock",
+    'name': "cjg_sale_stock",
 
     'summary': """
         Use Box Count field as demand on deliveries """,
