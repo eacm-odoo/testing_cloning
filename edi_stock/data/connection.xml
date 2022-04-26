@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- TODO: switch  -->
+    <data noupdate="0">
+
+        <record id="stock_quant_filter" model="ir.filters">
+            <field name="name">Stock quants</field>
+            <field name="model_id">stock.quant</field>
+            <!-- <field name="user_id" eval="False"/>
+            <field name="domain">[('project_id', '!=', False)]</field>
+            <field name="is_default" eval="True"/>
+            <field name="context">{
+                'col_group_by': ['date:month', 'timesheet_invoice_type'],
+                'group_by': ['project_id', 'employee_id'],
+                'measures': ['amount_currency', 'unit_amount', '__count']
+            }</field>
+            <field name="action_id" ref="timesheet_action_billing_report"/> -->
+        </record>
+
+        <record id="edi_stock_connection" model="edi.connection">
+            <field name="name">EDI: stock</field>
+            <field name="type">sftp</field>
+            <field name="configuration"><![CDATA[
+{
+    "host": "test.rebex.net",
+    "user": "demo",
+    "password": "password",
+    "in_folder": "/",
+    "in_folder_done": "/",
+    "in_folder_error": "/",
+    "on_conflict": "replace"
+}
+            ]]>            </field>
+            <!-- <field name="company_id" ref="base.main_company"/> -->
+        </record>
+        <record id="edi_stock_integration" model="edi.integration">
+            <field name="name">Send stock.quant</field>
+            <field name="type">send_stock_quant</field>
+            <field name="integration_flow">out</field>
+            <field name="interval_number">12</field>
+            <field name="record_filter_id" ref="stock_quant_filter"/>
+            <field name="interval_type">hours</field>
+            <field name="synchronization_content_type">csv</field>
+            <!-- <field name="in_process_type">file</field> -->
+            <field name="connection_id" ref="edi_stock_connection"/>
+            <!-- <field name="company_id" ref="base.main_company"/> -->
+            <field name="active" eval="True" />
+            <!-- <field name="priority">160</field> -->
+        </record>
+    </data>
+</odoo>
