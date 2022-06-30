@@ -35,7 +35,14 @@ class SaleOrderLine(models.Model):
             line_uom = line.product_uom
             quant_uom = line.product_id.uom_id
             product_qty, procurement_uom = line_uom._adjust_uom_quantities(product_qty, quant_uom)
-            product_qty = line.box_count
+            #
+            # PATCH START
+            #
+            product_qty = line.box_count - (previous_product_uom_qty.get(line.id)
+                                            / line.product_id.case_pack) if previous_product_uom_qty and previous_product_uom_qty.get(line.id) else line.box_count
+            #
+            # PATCH END
+            #
             procurements.append(self.env['procurement.group'].Procurement(
                 line.product_id, product_qty, procurement_uom,
                 line.order_id.partner_shipping_id.property_stock_customer,
