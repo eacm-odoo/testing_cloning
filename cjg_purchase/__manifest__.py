@@ -17,7 +17,7 @@
 
     "category": "Custom Development",
 
-    "version": "13.0.1.0.0",
+    "version": "1.0",
 
     "depends": [
         'cjg_sale_stock',
@@ -28,4 +28,8 @@
     ],
 
     "license": "OPL-1",
+
+    'installable' : True, 
+    'application' : False,
+    'auto_install' : False,
 }

@@ -8,15 +8,10 @@ import math
 class PurchaseOrderLine(models.Model):
     _inherit = 'purchase.order.line'
 
-    case_pack = fields.Integer(string='Case Pack', compute='_compute_case_pack')
+    case_pack = fields.Integer(string='Case Pack', related='product_id.product_tmpl_id.case_pack')
     box_qty = fields.Float(string='Box Count', compute='_compute_box_qty')
     price_box = fields.Float(string='Box Price', compute='_compute_box_price')
 
-    @api.depends('product_id')
-    def _compute_case_pack(self):
-        for line in self:
-            line.case_pack = line.product_id.product_tmpl_id.case_pack
-    
     @api.depends('box_qty', 'case_pack')
     def _compute_box_qty(self):
         for line in self:
@@ -29,7 +24,6 @@ class PurchaseOrderLine(models.Model):
     
     def _prepare_stock_moves(self, picking):
         res = super()._prepare_stock_moves(picking)
-        for val in res:
-            val['product_uom_qty'] = self.box_qty
-            val['price_unit'] = self.price_box
+        for move_val in res:
+            move_val.update(product_uom_qty = self.box_qty, price_unit = self.price_box)
         return res
