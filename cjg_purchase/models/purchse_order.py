@@ -12,7 +12,7 @@ class PurchaseOrderLine(models.Model):
     box_qty = fields.Float(string='Box Count', compute='_compute_box_qty')
     price_box = fields.Float(string='Box Price', compute='_compute_box_price')
 
-    @api.depends('box_qty', 'case_pack')
+    @api.depends('product_qty', 'case_pack')
     def _compute_box_qty(self):
         for line in self:
             line.box_qty = math.ceil(line.product_qty / line.case_pack) if line.case_pack > 0 else line.product_qty
