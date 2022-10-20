@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, models, api
-
-import math
+from odoo.tools.float_utils import float_round
 
 
 class PurchaseOrderLine(models.Model):
@@ -17,7 +16,7 @@ class PurchaseOrderLine(models.Model):
     @api.depends('unit_qty_cj', 'case_pack')
     def _compute_product_qty(self):
         for line in self:
-            line.product_qty = math.ceil(line.unit_qty_cj / line.case_pack) if line.case_pack > 0 else line.unit_qty_cj
+            line.product_qty = float_round(line.unit_qty_cj / line.case_pack, precision_rounding=1, rounding_method='UP') if line.case_pack > 0 else line.unit_qty_cj
     
     @api.depends('unit_price_cj', 'case_pack')
     def _compute_price_unit(self):
