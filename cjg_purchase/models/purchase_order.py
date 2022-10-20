@@ -11,7 +11,7 @@ class PurchaseOrderLine(models.Model):
     unit_qty_cj = fields.Float(string='Unit Quantity')
     unit_price_cj = fields.Float(string="Unit Price")
     product_qty = fields.Float(string='Box Quantity', digits='Product Unit of Measure', compute="_compute_product_qty")
-    price_unit = fields.Float(string='Box Price', required=True, digits='Product Price', compute='_compute_price_unit')
+    price_unit = fields.Float(string='Box Price', digits='Product Price', compute='_compute_price_unit')
 
     @api.depends('unit_qty_cj', 'case_pack')
     def _compute_product_qty(self):
