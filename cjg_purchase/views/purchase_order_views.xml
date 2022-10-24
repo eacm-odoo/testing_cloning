@@ -6,7 +6,7 @@
             <field name="model">purchase.order</field>
             <field name="inherit_id" ref="purchase.purchase_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//notebook/page//field[@name='order_line']/tree//field[@name='name']" position="after">
+                <xpath expr="//notebook/page//field[@name='order_line']/tree//field[@name='product_qty']" position="before">
                     <field name='unit_qty_cj'/>
                     <field name='unit_price_cj'/>
                     <field name='case_pack'/>
