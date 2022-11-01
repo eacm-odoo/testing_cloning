@@ -1,8 +1,6 @@
-# -*- coding:utf-8 -*-
-
 from odoo import _, api, models
 from odoo.exceptions import ValidationError
-from odoo.tools import config, float_compare
+from odoo.tools import float_compare
 
 
 class StockQuant(models.Model):
@@ -10,7 +8,8 @@ class StockQuant(models.Model):
 
     @api.constrains("product_id", "quantity")
     def check_negative_qty(self):
-        p = self.env["decimal.precision"].precision_get("Product Unit of Measure")
+        p = self.env["decimal.precision"].precision_get(
+            "Product Unit of Measure")
 
         for quant in self:
             if (
@@ -31,4 +30,3 @@ class StockQuant(models.Model):
                         quant.location_id.complete_name,
                     )
                 )
-

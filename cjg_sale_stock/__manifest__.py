@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "cjg_sale_stock",
 
