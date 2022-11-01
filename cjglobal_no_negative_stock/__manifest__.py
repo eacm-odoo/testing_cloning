@@ -13,7 +13,5 @@
     'category': 'Customizations/Product',
     'version': '1.1.0',
     'license': 'OPL-1',
-    'depends': [
-        'sale_stock',
-        ],
+    'depends': ['sale_stock'],
 }

@@ -14,10 +14,7 @@
     'website': "https://www.odoo.com",
     'license': 'OPL-1',
     'version': '0.2',
-    'depends': [
-        'sale_stock'
-        ],
-
+    'depends': ['sale_stock'],
     'data': [
         'views/view_order_form_inherit.xml',
         'views/product_template_form_view_inherit.xml',
