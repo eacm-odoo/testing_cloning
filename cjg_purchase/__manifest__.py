@@ -12,8 +12,7 @@
     "website": "https://www.odoo.com",
     "category": "Custom Development",
     "version": "1.1.0",
-    "depends": [
-        'cjg_sale_stock', 'purchase'],
+    "depends": ['cjg_sale_stock', 'purchase'],
     "data": [
         'views/purchase_order_views.xml',
     ],
