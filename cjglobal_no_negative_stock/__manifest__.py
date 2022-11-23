@@ -11,7 +11,7 @@
     'author': "Odoo PS",
     'website': "https://www.odoo.com",
     'category': 'Customizations/Product',
-    'version': '1.1.0',
+    'version': '2.1.0',
     'license': 'OPL-1',
     'depends': ['sale_stock'],
 }

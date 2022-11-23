@@ -13,7 +13,7 @@
     'author': 'Odoo PS',
     'website': 'https://www.odoo.com',
     'category': 'Development Services/Custom Development',
-    'version': '1.1.0',
+    'version': '2.1.0',
     'depends': ['stock'],
     'data': [
         'views/stock_quant_views.xml'
