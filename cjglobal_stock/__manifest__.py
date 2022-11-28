@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': 'CJ Global: Available to sell field',
     'summary': '''
@@ -11,13 +10,11 @@
         quantity
     ''',
     'license': 'OPL-1',
-    'author': 'Odoo Inc',
+    'author': 'Odoo PS',
     'website': 'https://www.odoo.com',
     'category': 'Development Services/Custom Development',
-    'version': '1.0',
-    'depends': [
-        'stock',
-    ],
+    'version': '2.1.0',
+    'depends': ['stock'],
     'data': [
         'views/stock_quant_views.xml'
     ],

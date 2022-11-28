@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "cjg_sale_stock",
 
@@ -10,9 +9,9 @@
         Take amount out of inventory.
     """,
 
-    'author': "Odoo INC",
+    'author': "Odoo PS",
     'website': "https://www.odoo.com",
-    'license': 'OEEL-1',
-    'version': '0.1',
+    'license': 'OPL-1',
+    'version': '0.2',
     'depends': ['sale_stock'],
 }
