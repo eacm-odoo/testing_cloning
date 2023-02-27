@@ -61,9 +61,9 @@ class SaleOrderLine(models.Model):
                 for move in outgoing_moves:
                     if move.state != 'done':
                         continue
-                    qty += move.product_uom._compute_quantity(move.product_uom_qty, line.product_uom, rounding_method='HALF-UP') * line.product_uom.factor_inv
+                    qty += move.product_uom._compute_quantity(move.product_uom_qty, line.product_uom, rounding_method='HALF-UP') *  line.case_pack
                 for move in incoming_moves:
                     if move.state != 'done':
                         continue
-                    qty -= move.product_uom._compute_quantity(move.product_uom_qty, line.product_uom, rounding_method='HALF-UP') * line.product_uom.factor_inv
+                    qty -= move.product_uom._compute_quantity(move.product_uom_qty, line.product_uom, rounding_method='HALF-UP') * line.case_pack
                 line.qty_delivered = qty
