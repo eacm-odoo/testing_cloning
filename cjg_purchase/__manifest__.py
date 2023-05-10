@@ -8,10 +8,10 @@
         Developer: ELCE
         Ticket ID: 2948278
     """,
-    "author": "Odoo PS",
+    "author": "Odoo, Inc.",
     "website": "https://www.odoo.com",
     "category": "Custom Development",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "depends": ['cjg_sale_stock', 'purchase'],
     "data": [
         'views/purchase_order_views.xml',
