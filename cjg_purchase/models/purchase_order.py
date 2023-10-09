@@ -8,7 +8,7 @@ class PurchaseOrderLine(models.Model):
     case_pack = fields.Integer(string='Case Pack', related='product_id.product_tmpl_id.case_pack')
     unit_qty_cj = fields.Float(string='Unit Quantity')
     unit_price_cj = fields.Float(string="Unit Price")
-    product_qty = fields.Float(string='Box Quantity', digits='Product Unit of Measure', compute="_compute_product_qty")
+    product_qty = fields.Float(string='Box Quantity', digits='Product Unit of Measure', compute="_compute_product_qty", store=True)
     price_unit = fields.Float(string='Box Price', digits='Product Price', compute='_compute_price_unit')
 
     @api.depends('unit_qty_cj', 'case_pack')
