@@ -7,6 +7,7 @@
     'description':
         """
         Module to add pallet information to the delivery transfer, 
+        NEW REALLY IMPORTANT CHANGE!!!
         On the package reference (stock.quant.package):
         - Pallet Height
         - Pallet Width
